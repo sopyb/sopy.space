@@ -1,0 +1,38 @@
+body {
+    min-height: 100vh;
+    background-color: #041825;
+    margin: 0;
+    position: relative;
+}
+
+.center {
+    background-color: white;
+
+    position: absolute;
+    padding: 0 10%;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.star {
+    border-radius: 50%;
+    background-color: #8e8e8e;
+    position: absolute;
+
+    filter: blur(3px);
+}
+
+#starContainer1,
+#starContainer2,
+#starContainer3 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    margin: 0;
+
+    transform: scale(105%);
+
+    transition: bottom 0.1s linear, right 0.1s linear;
+}
