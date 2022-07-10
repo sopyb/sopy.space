@@ -43,27 +43,17 @@ $(document).mousemove((e) => {
 }).mouseover()
 
 //parallax mobile
-function mobileParallax(e) {
-    let absolute = e.absolute,
-        x = Math.round(e.beta),
-        y = Math.round(e.gamma),
-        z = Math.round(e.alpha);
+let sensor = new RelativeOrientationSensor({frequency:60, referenceFrame: "device"})
 
-    $("#debug").text(`Absolute: ${absolute}\nX:${x} Y:${y}; Z:${z}`)
-    if(!x || !y || !z) return;
+sensor.addEventListener("reading", () => {
+    let quaternion = sensor.quaternion,
+        x = quaternion[0],
+        y = quaternion[1],
+        z = quaternion[2],
+        w = quaternion[3];
 
-    containers[0].css({"bottom": ((y/30) + "%"), "right": ((x / 30) + "%")})
-    containers[1].css({"bottom": ((y/25) + "%"), "right": ((x / 25) + "%")})
-    containers[2].css({"bottom": ((y/15) + "%"), "right": ((x / 15) + "%")})
-}
-
-if (typeof DeviceMotionEvent.requestPermission === 'function') {
-    DeviceMotionEvent.requestPermission()
-        .then(response => {
-            if (response == 'granted') {
-                $(window).on("deviceorientation", mobileParallax)
-            }
-        })
-        .catch(console.error)
-} else $(window).on("deviceorientation", mobileParallax)
+    containers[0].css({"bottom": ((y / 30) + "%"), "right": ((x / 30) + "%")})
+    containers[1].css({"bottom": ((y / 25) + "%"), "right": ((x / 25) + "%")})
+    containers[2].css({"bottom": ((y / 15) + "%"), "right": ((x / 15) + "%")})
+})
 
