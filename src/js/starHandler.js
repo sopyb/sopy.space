@@ -37,9 +37,9 @@ $(document).mousemove((e) => {
         xpr = x/width*100-50,
         ypr = y/height*100-50
 
-    containers[2].css({"bottom": ((ypr/15) + "%"), "right": ((xpr / 15) + "%")})
     containers[0].css({"bottom": ((ypr/30) + "%"), "right": ((xpr / 30) + "%")})
     containers[1].css({"bottom": ((ypr/25) + "%"), "right": ((xpr / 25) + "%")})
+    containers[2].css({"bottom": ((ypr/15) + "%"), "right": ((xpr / 15) + "%")})
 }).mouseover()
 
 //parallax mobile
@@ -49,10 +49,10 @@ $(window).on("deviceorientation", (e) => {
         y = Math.round(e.gamma),
         z = Math.round(e.alpha);
 
-    if(!x || !y || !z) return;
     $("#debug").text(`Absolute: ${absolute}\nX:${x} Y:${y}; Z:${z}`)
+    if(!x || !y || !z) return;
 
-    containers[2].css({"bottom": ((y/15) + "%"), "right": ((x / 15) + "%")})
     containers[0].css({"bottom": ((y/30) + "%"), "right": ((x / 30) + "%")})
     containers[1].css({"bottom": ((y/25) + "%"), "right": ((x / 25) + "%")})
+    containers[2].css({"bottom": ((y/15) + "%"), "right": ((x / 15) + "%")})
 })
