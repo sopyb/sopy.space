@@ -49,6 +49,7 @@ $(window).on("deviceorientation", (e) => {
         y = Math.round(e.gamma),
         z = Math.round(e.alpha);
 
+    if(!x || !y || !z) return;
     $("#debug").text(`Absolute: ${absolute}\nX:${x} Y:${y}; Z:${z}`)
 
     containers[2].css({"bottom": ((y/15) + "%"), "right": ((x / 15) + "%")})
