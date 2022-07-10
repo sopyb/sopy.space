@@ -48,9 +48,9 @@ if (typeof RelativeOrientationSensor !== "undefined") {
 
     sensor.addEventListener("reading", () => {
         let quaternion = sensor.quaternion,
-            x = quaternion[1] * 100,
-            y = quaternion[2] * 100,
-            z = quaternion[0] * 100;
+            x = quaternion[1] * 720,
+            y = quaternion[2] * 720,
+            z = quaternion[0] * 720;
 
         $("#debug").text(`X: ${x} Y:${y}; Z:${z}`)
 
