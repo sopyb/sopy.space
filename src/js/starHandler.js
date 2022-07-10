@@ -52,6 +52,8 @@ sensor.addEventListener("reading", () => {
         z = quaternion[2],
         w = quaternion[3];
 
+    $("#debug").text(`X: ${x} Y:${y}; Z:${z} W: ${w}`)
+
     containers[0].css({"bottom": ((y / 30) + "%"), "right": ((x / 30) + "%")})
     containers[1].css({"bottom": ((y / 25) + "%"), "right": ((x / 25) + "%")})
     containers[2].css({"bottom": ((y / 15) + "%"), "right": ((x / 15) + "%")})
