@@ -57,3 +57,4 @@ sensor.addEventListener("reading", () => {
     containers[2].css({"bottom": ((y / 15) + "%"), "right": ((x / 15) + "%")})
 })
 
+sensor.start()
