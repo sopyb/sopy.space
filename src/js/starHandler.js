@@ -54,6 +54,7 @@ sensor.addEventListener("reading", () => {
 
     $("#debug").text(`X: ${x} Y:${y}; Z:${z} W: ${w}`)
 
+    if(!x || !y || !z) return;
     containers[0].css({"bottom": ((y / 30) + "%"), "right": ((x / 30) + "%")})
     containers[1].css({"bottom": ((y / 25) + "%"), "right": ((x / 25) + "%")})
     containers[2].css({"bottom": ((y / 15) + "%"), "right": ((x / 15) + "%")})
