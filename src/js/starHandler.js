@@ -43,21 +43,23 @@ $(document).mousemove((e) => {
 }).mouseover()
 
 //parallax mobile
-let sensor = new RelativeOrientationSensor({frequency:60, referenceFrame: "device"})
+if (typeof RelativeOrientationSensor !== "undefined") {
+    let sensor = new RelativeOrientationSensor({frequency:60, referenceFrame: "device"})
 
-sensor.addEventListener("reading", () => {
-    let quaternion = sensor.quaternion,
-        x = quaternion[0],
-        y = quaternion[1],
-        z = quaternion[2],
-        w = quaternion[3];
+    sensor.addEventListener("reading", () => {
+        let quaternion = sensor.quaternion,
+            x = quaternion[0],
+            y = quaternion[1],
+            z = quaternion[2],
+            w = quaternion[3];
 
-    $("#debug").text(`X: ${x} Y:${y}; Z:${z} W: ${w}`)
+        $("#debug").text(`X: ${x} Y:${y}; Z:${z} W: ${w}`)
 
-    if(!x || !y || !z) return;
-    containers[0].css({"bottom": ((y / 30) + "%"), "right": ((x / 30) + "%")})
-    containers[1].css({"bottom": ((y / 25) + "%"), "right": ((x / 25) + "%")})
-    containers[2].css({"bottom": ((y / 15) + "%"), "right": ((x / 15) + "%")})
-})
+        if(!x || !y || !z) return;
+        containers[0].css({"bottom": ((y / 30) + "%"), "right": ((x / 30) + "%")})
+        containers[1].css({"bottom": ((y / 25) + "%"), "right": ((x / 25) + "%")})
+        containers[2].css({"bottom": ((y / 15) + "%"), "right": ((x / 15) + "%")})
+    })
 
-sensor.start()
+    sensor.start()
+}
