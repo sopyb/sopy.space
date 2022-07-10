@@ -52,7 +52,7 @@ if (typeof RelativeOrientationSensor !== "undefined") {
             y = quaternion[1] * 100,
             z = quaternion[2] * 100;
 
-        $("#debug").text(`X: ${x} Y:${y}; Z:${z} W: ${w}`)
+        $("#debug").text(`X: ${x} Y:${y}; Z:${z}`)
 
         if(!x || !y || !z) return;
         containers[0].css({"bottom": ((y / 30) + "%"), "right": ((x / 30) + "%")})
