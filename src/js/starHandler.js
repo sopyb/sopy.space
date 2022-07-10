@@ -43,7 +43,7 @@ $(document).mousemove((e) => {
 }).mouseover()
 
 //parallax mobile
-$(window).on("deviceorientation", (e) => {
+function mobileParallax(e) {
     let absolute = e.absolute,
         x = Math.round(e.beta),
         y = Math.round(e.gamma),
@@ -55,4 +55,15 @@ $(window).on("deviceorientation", (e) => {
     containers[0].css({"bottom": ((y/30) + "%"), "right": ((x / 30) + "%")})
     containers[1].css({"bottom": ((y/25) + "%"), "right": ((x / 25) + "%")})
     containers[2].css({"bottom": ((y/15) + "%"), "right": ((x / 15) + "%")})
-})
+}
+
+if (typeof DeviceMotionEvent.requestPermission === 'function') {
+    DeviceMotionEvent.requestPermission()
+        .then(response => {
+            if (response == 'granted') {
+                $(window).on("deviceorientation", mobileParallax)
+            }
+        })
+        .catch(console.error)
+} else $(window).on("deviceorientation", mobileParallax)
+
