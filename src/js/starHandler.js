@@ -49,9 +49,9 @@ if (typeof RelativeOrientationSensor !== "undefined") {
 
     sensor.addEventListener("reading", () => {
         let quaternion = sensor.quaternion,
-            rawx = - quaternion[0] * 350,
-            rawy = quaternion[1] * 350,
-            rawz = quaternion[2] * 350;
+            rawx = - quaternion[0] * 250,
+            rawy = quaternion[1] * 250,
+            rawz = quaternion[2] * 250;
 
         if(!firstCoords) firstCoords = {
             x: rawx,
