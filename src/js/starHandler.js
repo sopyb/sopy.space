@@ -44,13 +44,13 @@ $(document).mousemove((e) => {
 
 //parallax mobile
 if (typeof RelativeOrientationSensor !== "undefined") {
-    let sensor = new RelativeOrientationSensor({frequency:60, referenceFrame: "device"})
+    let sensor = new RelativeOrientationSensor({frequency:60, referenceFrame: "screen"})
 
     sensor.addEventListener("reading", () => {
         let quaternion = sensor.quaternion,
-            x = quaternion[0] * 100,
-            y = quaternion[1] * 100,
-            z = quaternion[2] * 100;
+            x = quaternion[1] * 100,
+            y = quaternion[2] * 100,
+            z = quaternion[0] * 100;
 
         $("#debug").text(`X: ${x} Y:${y}; Z:${z}`)
 
